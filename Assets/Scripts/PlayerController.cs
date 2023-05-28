@@ -6,14 +6,22 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance {get; private set;}
 
+    [Header("Movement")]
+
     [SerializeField] private Rigidbody rb;
 
-    [SerializeField] private GameObject mesh;
+    [SerializeField] private Transform mesh;
 
     [SerializeField] private float moveSpeed;
     [SerializeField] float rotationSpeed;
+    [HideInInspector] public bool canDash;
+    [SerializeField] private float dashCountdown;
 
-    public Vector3 moveDirection;
+    [HideInInspector] public Vector3 moveDirection;
+
+    [Header("KeyCodes")]
+
+    [SerializeField] public KeyCode dashKey;
 
     void Awake()
     {
@@ -25,15 +33,19 @@ public class PlayerController : MonoBehaviour
         {
             instance = this;
         }
+
+        canDash = true;
     }
 
     void FixedUpdate()
     {
+        //Floating
         if(transform.position.y < 10)
         {
             rb.AddForce(Vector3.up * rb.mass * 9.81f , ForceMode.Force);
         }
 
+        //Movement
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -41,13 +53,31 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Force);
         
-
+        //If is moving
         if(moveDirection != Vector3.zero)
         {
+            //Mesh Rotation
             Quaternion toRotation = Quaternion.LookRotation(-moveDirection, Vector3.up);
 
-            mesh.transform.rotation = Quaternion.RotateTowards(mesh.transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            mesh.rotation = Quaternion.RotateTowards(mesh.rotation, toRotation, rotationSpeed * Time.deltaTime);
+
+            //Dash
+            if(Input.GetKeyDown(dashKey) && canDash)
+            {
+                rb.AddForce(moveDirection.normalized * moveSpeed , ForceMode.Impulse);
+                StartCoroutine(DashCountDown());
+            }
         }
         
+
+        
+    }
+
+    IEnumerator DashCountDown()
+    {
+        yield return new WaitForSeconds(.01f);
+        canDash = false;
+        yield return new WaitForSeconds(dashCountdown);
+        canDash = true;
     }
 }
