@@ -67,10 +67,7 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(moveDirection.normalized * moveSpeed , ForceMode.Impulse);
                 StartCoroutine(DashCountDown());
             }
-        }
-        
-
-        
+        }    
     }
 
     IEnumerator DashCountDown()
