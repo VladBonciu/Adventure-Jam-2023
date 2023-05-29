@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 410087040}
-  m_IndirectSpecularColor: {r: 0.14906827, g: 0.41792625, b: 0.60345244, a: 1}
+  m_IndirectSpecularColor: {r: 0.14906827, g: 0.41792622, b: 0.6034524, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -317,7 +317,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: -2.0511606e-15, y: 0.000000047898308, z: 9.8247116e-23, w: 1}
+  m_LocalRotation: {x: 2.0511606e-15, y: 0.00000004789831, z: -9.824713e-23, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5550,7 +5550,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546489577}
-  m_LocalRotation: {x: -2.0511606e-15, y: 0.000000047898308, z: 9.8247116e-23, w: 1}
+  m_LocalRotation: {x: 2.0511606e-15, y: 0.00000004789831, z: -9.824713e-23, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5573,7 +5573,7 @@ GameObject:
   - component: {fileID: 595498728}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5627,6 +5627,7 @@ MonoBehaviour:
   moveSpeed: 0.6
   rotationSpeed: 120
   canDash: 0
+  isMoving: 0
   dashCountdown: 5
   moveDirection: {x: 0, y: 0, z: 0}
   dashKey: 32
@@ -5645,6 +5646,7 @@ MonoBehaviour:
   animator: {fileID: 1353832696}
   swimBubbles: {fileID: 413827828}
   canDashBubbles: {fileID: 2125907443}
+  playerController: {fileID: 595498727}
 --- !u!1 &742302153
 GameObject:
   m_ObjectHideFlags: 0

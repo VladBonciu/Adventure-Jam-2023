@@ -12,10 +12,12 @@ public class Fish: MonoBehaviour {
     public float hungerCop;
     public float hungerSpeed;
     Rigidbody rb;
+
+    FishMovement fishMovement;
+
     private void Awake()
     {
-        this.gameObject.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        this.gameObject.transform.localScale = new Vector3(0.30f,0.30f,0.30f) * Random.Range(1, maxSize);
+        fishMovement = this.GetComponent<FishMovement>();
 
         carnivorous = RandomPreference();
 
@@ -28,12 +30,23 @@ public class Fish: MonoBehaviour {
         {
             herbivorous = true;
         }
-        
 
+        if(carnivorous)
+        {
+            this.GetComponentInChildren<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        }
+        else
+        {
+            this.GetComponentInChildren<Renderer>().material.color = Random.ColorHSV(0f, 1f, 0.2f, 0.5f, 0.8f, 1f);
+        }
+        
+        this.gameObject.transform.localScale = new Vector3(0.30f,0.30f,0.30f) * Random.Range(1, maxSize);
 
         hungerCop = hunger;
+
         rb = GetComponent<Rigidbody>();
     }
+
     private void FixedUpdate()
     {
         if (transform.position.y < 10)
@@ -41,6 +54,7 @@ public class Fish: MonoBehaviour {
             rb.AddForce(Vector3.up * rb.mass * 9.81f, ForceMode.Force);
         }
     }
+
     private void Update()
     {
         hunger -= 1*Time.deltaTime;
@@ -67,5 +81,18 @@ public class Fish: MonoBehaviour {
     void Die() //Die if hungry
     {
         Destroy(gameObject);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Fish") && carnivorous)
+        {
+            
+        }
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Vegetation") && herbivorous)
+        {
+            Eat();
+            Destroy(collision.gameObject);
+        }
     }
 }

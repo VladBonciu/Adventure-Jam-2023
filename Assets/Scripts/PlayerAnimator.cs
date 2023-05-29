@@ -10,9 +10,12 @@ public class PlayerAnimator : MonoBehaviour
 
     [SerializeField] private ParticleSystem canDashBubbles;
 
+    [SerializeField] private PlayerController playerController;
+
     void FixedUpdate()
     {
-        if(PlayerController.instance.moveDirection != Vector3.zero)
+        
+        if(playerController.isMoving)
         {
             animator.SetBool("isSwimming", true);
             if(!swimBubbles.isEmitting)
@@ -27,9 +30,9 @@ public class PlayerAnimator : MonoBehaviour
             swimBubbles.Stop(true , ParticleSystemStopBehavior.StopEmitting);
         }
 
-        if(PlayerController.instance.canDash)
+        if(playerController.canDash)
         {
-            if(Input.GetKeyDown(PlayerController.instance.dashKey) && PlayerController.instance.moveDirection != Vector3.zero)
+            if(Input.GetKeyDown(playerController.dashKey) && playerController.isMoving)
             {
                 swimBubbles.Emit(10);
             }

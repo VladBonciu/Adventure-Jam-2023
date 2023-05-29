@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController instance {get; private set;}
-
     [Header("Movement")]
 
     [SerializeField] private Rigidbody rb;
@@ -15,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] float rotationSpeed;
     [HideInInspector] public bool canDash;
+    [HideInInspector] public bool isMoving;
     [SerializeField] private float dashCountdown;
 
     [HideInInspector] public Vector3 moveDirection;
@@ -25,15 +24,6 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        if(instance != null && instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            instance = this;
-        }
-
         canDash = true;
     }
 
@@ -56,8 +46,10 @@ public class PlayerController : MonoBehaviour
         //If is moving
         if(moveDirection != Vector3.zero)
         {
+            isMoving = true;
+
             //Mesh Rotation
-            Quaternion toRotation = Quaternion.LookRotation(-moveDirection, Vector3.up);
+            Quaternion toRotation = Quaternion.LookRotation(-moveDirection.normalized, Vector3.up);
 
             mesh.rotation = Quaternion.RotateTowards(mesh.rotation, toRotation, rotationSpeed * Time.deltaTime);
 
@@ -68,6 +60,10 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(DashCountDown());
             }
         }    
+        else
+        {
+            isMoving = false;
+        }
     }
 
     IEnumerator DashCountDown()

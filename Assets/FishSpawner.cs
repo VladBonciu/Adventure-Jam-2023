@@ -6,6 +6,7 @@ public class FishSpawner : MonoBehaviour
 {
     public GameObject fish;
     public float spawnCount;
+    
     void Start()
     {
         for (int i = 0; i< spawnCount; i++) {
