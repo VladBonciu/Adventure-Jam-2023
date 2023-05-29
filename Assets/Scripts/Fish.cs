@@ -12,12 +12,25 @@ public class Fish: MonoBehaviour {
     public float hungerCop;
     public float hungerSpeed;
     Rigidbody rb;
-    private void Start()
+    private void Awake()
     {
         this.gameObject.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         this.gameObject.transform.localScale = new Vector3(0.30f,0.30f,0.30f) * Random.Range(1, maxSize);
-        herbivorous = RandomPreference();
+
         carnivorous = RandomPreference();
+
+        //If not carnivorous its herbivorous
+        if(carnivorous)
+        {
+            herbivorous = RandomPreference();
+        }
+        else
+        {
+            herbivorous = true;
+        }
+        
+
+
         hungerCop = hunger;
         rb = GetComponent<Rigidbody>();
     }
@@ -41,16 +54,18 @@ public class Fish: MonoBehaviour {
     {
         hunger = hungerCop;
     }
- bool RandomPreference() //Random bool generator
-{
-    if (Random.value >= 0.5)
+
+    bool RandomPreference() //Random bool generator
     {
-        return true;
+        if (Random.value >= 0.5)
+        {
+            return true;
+        }
+        return false;
     }
-    return false;
-}
+
     void Die() //Die if hungry
     {
-    Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
