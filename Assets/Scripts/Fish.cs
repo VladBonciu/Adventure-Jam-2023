@@ -30,6 +30,7 @@ public class Fish: MonoBehaviour {
     }
     private void Update()
     {
+        hunger -= 1*Time.deltaTime;
         if (hunger == 0) 
         {
             Die();
@@ -38,7 +39,7 @@ public class Fish: MonoBehaviour {
     }
     void Eat()
     {
-    
+        hunger = hungerCop;
     }
  bool RandomPreference() //Random bool generator
 {
