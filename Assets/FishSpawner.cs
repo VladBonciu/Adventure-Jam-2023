@@ -5,7 +5,7 @@ using UnityEngine;
 public class FishSpawner : MonoBehaviour
 {
     public GameObject fish;
-    public float spawnCount;
+    [SerializeField] float spawnCount;
     
     void Start()
     {
