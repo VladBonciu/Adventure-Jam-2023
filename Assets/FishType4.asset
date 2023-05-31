@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be2d1dd22028e8840b22dcdd2673cd5b, type: 3}
-  m_Name: FishType2
+  m_Name: FishType4
   m_EditorClassIdentifier: 
-  mesh: {fileID: -5523277661179574252, guid: 0a093a9e280f71b43b129acfc06a66c9, type: 3}
-  minSize: 7
-  maxSize: 15
+  mesh: {fileID: -5523277661179574252, guid: f2932577dd23b4e4abee6bdb481cab84, type: 3}
+  minSize: 5
+  maxSize: 7
   carnivorous: 1
-  herbivorous: 0
+  herbivorous: 1
+  detectionRange: 10
   hasSpecificColor: 1
-  specificColor: {r: 0.85882354, g: 0.64410925, b: 0.5058824, a: 0}
-  colorVariation: 0.1
-  normalSpeed: 1
-  hungerSpeed: 0
+  specificColor: {r: 0.7408028, g: 0.6033731, b: 0.8584906, a: 0}
+  colorVariation: 0.2
+  normalSpeed: 1.2
+  hungerSpeed: 2

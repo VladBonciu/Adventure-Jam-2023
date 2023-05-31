@@ -9,10 +9,10 @@ public class Fish: MonoBehaviour {
     [SerializeField] private FishMovement fishMovement;
     [SerializeField] private SkinnedMeshRenderer fishMesh;
     [SerializeField] private MeshCollider fishMeshCollider;
+    [SerializeField] Transform meshObject;
 
     int minSize;
     int maxSize;
-
     float size;
 
     bool carnivorous;
@@ -25,14 +25,20 @@ public class Fish: MonoBehaviour {
 
     public float hunger;
     public float hungerCop;
+
+    bool isHungry;
     Rigidbody rb;
 
     
-    
+
+     private float detectionRange;
+
 
     private void Awake()
     {
         // fishMovement = this.GetComponent<FishMovement>();
+
+        isHungry = false;
 
         fishMovement.moveSpeed = normalSpeed;
 
@@ -44,6 +50,8 @@ public class Fish: MonoBehaviour {
 
         minSize = fishType.minSize;
         maxSize = fishType.maxSize;
+
+        detectionRange = fishType.detectionRange;
 
         if(fishType.hasSpecificColor)
         {
@@ -81,9 +89,19 @@ public class Fish: MonoBehaviour {
 
     private void Update()
     {
-        hunger -= 1 * Time.deltaTime;
+        hunger -= 2 * Time.deltaTime;
 
-        if (hunger == 0) 
+        if(hunger < 50f)
+        {
+            isHungry = true;
+            SearchForFood();
+        }
+        else
+        {
+            isHungry = false;
+        }
+
+        if (hunger <= 0) 
         {
             Die();
         }
@@ -105,16 +123,40 @@ public class Fish: MonoBehaviour {
 
     void Die() //Die if hungry
     {
-        Destroy(gameObject);
+        Destroy(this.gameObject);
+    }
+
+    void SearchForFood()
+    {               
+        RaycastHit hit;
+
+        Debug.DrawRay(meshObject.transform.position, -meshObject.transform.forward * detectionRange, Color.red, 1f);
+        Debug.DrawRay(meshObject.transform.position, (-meshObject.transform.forward + Vector3.up) * detectionRange, Color.white, 1f);
+        Debug.DrawRay(meshObject.transform.position, (-meshObject.transform.forward+ Vector3.down)* detectionRange, Color.white, 1f);
+                    
+        if(  ( Physics.Raycast(meshObject.transform.position, -meshObject.transform.forward, out hit, detectionRange)) || ( Physics.Raycast( meshObject.transform.position, -meshObject.transform.forward + Vector3.up, out hit, detectionRange )) || ( Physics.Raycast(meshObject.transform.position, -meshObject.transform.forward + Vector3.down, out hit, detectionRange ))  )
+        {
+            if((hit.collider.gameObject.layer == LayerMask.NameToLayer("Fish")) && carnivorous)
+            {  
+                fishMovement.moveSpeed = fishType.hungerSpeed;
+                fishMovement.TartgetObject(hit.transform);
+            }
+            else if((hit.collider.gameObject.layer == LayerMask.NameToLayer("Vegetation")) && herbivorous)
+            {
+                fishMovement.moveSpeed = fishType.hungerSpeed;
+                fishMovement.TartgetObject(hit.transform);
+            }   
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Fish") && carnivorous)
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Fish") && carnivorous && isHungry)
         {
-            
+            Eat();
+            Destroy(collision.gameObject);
         }
-        else if(collision.gameObject.layer == LayerMask.NameToLayer("Vegetation") && herbivorous)
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Vegetation") && herbivorous && isHungry)
         {
             Eat();
             Destroy(collision.gameObject);

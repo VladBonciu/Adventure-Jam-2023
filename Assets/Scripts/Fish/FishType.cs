@@ -12,6 +12,7 @@ public class FishType : ScriptableObject
     public int maxSize;
     public bool carnivorous;
     public bool herbivorous;
+    public float detectionRange;
 
     [Header("Aspect")]
 

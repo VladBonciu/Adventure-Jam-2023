@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: FishType5
   m_EditorClassIdentifier: 
   mesh: {fileID: -5523277661179574252, guid: 8210c979ec233fa438c5bdaecb199e21, type: 3}
-  minSize: 1
-  maxSize: 5
+  minSize: 3
+  maxSize: 7
   carnivorous: 0
   herbivorous: 1
+  detectionRange: 15
   hasSpecificColor: 1
   specificColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 0}
   colorVariation: 0.3
   normalSpeed: 1
-  hungerSpeed: 0
+  hungerSpeed: 2

@@ -4895,10 +4895,12 @@ MonoBehaviour:
   fishMovement: {fileID: 4794417035372154791}
   fishMesh: {fileID: 4352992440223330292}
   fishMeshCollider: {fileID: 8031627223477907398}
+  meshObject: {fileID: 5223150771487247101}
   normalSpeed: 1
   hungerSpeed: 2
   hunger: 100
   hungerCop: 0
+  detectionRange: 10
 --- !u!114 &4794417035372154791
 MonoBehaviour:
   m_ObjectHideFlags: 0

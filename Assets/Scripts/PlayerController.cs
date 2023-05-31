@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
         if(transform.position.y < 10)
         {
             rb.AddForce(Vector3.up * rb.mass * 9.81f , ForceMode.Force);
+            RenderSettings.fogDensity = Mathf.Lerp(RenderSettings.fogDensity, 0.025f, Time.deltaTime * 2f);
+        }
+        else
+        {
+            RenderSettings.fogDensity = Mathf.Lerp(RenderSettings.fogDensity,  0.017f, Time.deltaTime * 3f);
         }
 
         //Movement
@@ -72,5 +77,18 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         yield return new WaitForSeconds(dashCountdown);
         canDash = true;
+    }
+
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Fish") )
+        {
+            
+        }
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Vegetation") )
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

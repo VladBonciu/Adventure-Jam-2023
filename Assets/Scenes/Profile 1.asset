@@ -17,8 +17,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   contrast:
-    m_OverrideState: 0
-    m_Value: 16.4
+    m_OverrideState: 1
+    m_Value: 10
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 0.8235294, g: 1, b: 0.87828267, a: 1}
@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Value: 72
   saturation:
     m_OverrideState: 0
-    m_Value: 20.6
+    m_Value: 11.4
 --- !u!114 &-4380332457468943280
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -45,17 +45,17 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 2
   gaussianStart:
-    m_OverrideState: 0
-    m_Value: 10
+    m_OverrideState: 1
+    m_Value: 20
   gaussianEnd:
-    m_OverrideState: 0
-    m_Value: 30
+    m_OverrideState: 1
+    m_Value: 100
   gaussianMaxRadius:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0.5
   highQualitySampling:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   focusDistance:
     m_OverrideState: 1
     m_Value: 10
@@ -64,10 +64,10 @@ MonoBehaviour:
     m_Value: 1
   focalLength:
     m_OverrideState: 1
-    m_Value: 30
+    m_Value: 45
   bladeCount:
     m_OverrideState: 0
-    m_Value: 5
+    m_Value: 9
   bladeCurvature:
     m_OverrideState: 0
     m_Value: 1
@@ -89,7 +89,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.057
+    m_Value: 0.06
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,8 +103,8 @@ MonoBehaviour:
   m_Name: Profile 1
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 2392262628632739619}
   - {fileID: -4380332457468943280}
+  - {fileID: 2392262628632739619}
   - {fileID: -7122633185392160229}
   - {fileID: 191120055700517047}
   - {fileID: -2659047535694474230}
@@ -123,7 +123,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.12
+    m_Value: 0.3
   xMultiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -131,11 +131,11 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   center:
-    m_OverrideState: 0
-    m_Value: {x: 0.5, y: 0.5}
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.55}
   scale:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 1.08
 --- !u!114 &2392262628632739619
 MonoBehaviour:
   m_ObjectHideFlags: 3

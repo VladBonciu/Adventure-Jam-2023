@@ -8,17 +8,20 @@ public class FishMovement : MonoBehaviour
     [SerializeField] private ParticleSystem swimBubbles;
     public float moveSpeed;
 
-    bool moving;
+    bool wandering;
     float movex;
     float movey;
+    bool isTargeting;
     Rigidbody rb;
 
-    Vector3 target;
+    Vector3 direction;
     [SerializeField] private Transform meshGameObject;
     [SerializeField] private Animator animator;
 
     void Awake()
     {
+        isTargeting = false;
+
         rb = GetComponent<Rigidbody>();
 
         transform.position = new Vector3(transform.position.x, transform.position.y, 10f);
@@ -29,7 +32,7 @@ public class FishMovement : MonoBehaviour
     void Update()
     {
         //Mesh Rotation
-        Quaternion toRotation = Quaternion.LookRotation(-target, Vector3.up);
+        Quaternion toRotation = Quaternion.LookRotation(-direction, Vector3.up);
 
         meshGameObject.rotation = Quaternion.RotateTowards(meshGameObject.rotation, toRotation, 200 * Time.deltaTime);
 
@@ -43,11 +46,11 @@ public class FishMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(moving)
+        if(wandering)
         {
             animator.SetBool("isSwimming", true);
 
-            target = new Vector3(movex ,movey , 0).normalized;
+            direction = new Vector3(movex ,movey , 0).normalized;
 
             rb.AddForce(new Vector3(movex ,movey , 0f).normalized * moveSpeed * rb.mass * 3f, ForceMode.Force);
 
@@ -55,6 +58,12 @@ public class FishMovement : MonoBehaviour
             {
                 swimBubbles.Play();
             }            
+        }
+        else if(isTargeting)
+        {
+            animator.SetBool("isSwimming", true);
+
+            rb.AddForce(direction * moveSpeed * rb.mass * 3f, ForceMode.Force);
         }
         else
         {
@@ -64,21 +73,46 @@ public class FishMovement : MonoBehaviour
     }
     IEnumerator Wander() 
     {
-        moving = true;
+        wandering = true;
         
         yield return new WaitForSeconds(movementTime);
 
-        moving = false;
+        wandering = false;
 
         movex = Random.Range(-20, 20);
         movey = Random.Range(-10, 10);
-        movementTime = Random.Range(1, 7);
+        movementTime = Random.Range(1, 5);
         
 
         yield return new WaitForSeconds(movementTime);
 
-        StartCoroutine(Wander());
+        if(!isTargeting)
+        {
+            StartCoroutine(Wander());
+        }
+        
     }
 
+    public void TartgetObject(Transform location)
+    {
+        isTargeting = true;
+        Vector3 heading = new Vector3(location.position.x ,location.position.y , 0) - new Vector3(transform.position.x ,transform.position.y , 0);
+        direction = ( heading / heading.magnitude).normalized;
+        
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Fish") )
+        {
+            isTargeting = false;
+            StartCoroutine(Wander());
+        }
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Vegetation") )
+        {
+            isTargeting = false;
+            StartCoroutine(Wander());
+        }
+    }
 
 }

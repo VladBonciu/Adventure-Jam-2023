@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9222120844213039279}
   - component: {fileID: 9222120844213039266}
   - component: {fileID: 3603826340190802242}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plant_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9222120844213039267}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2.742756
@@ -126,6 +126,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: kelp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b46991bf0db623543b2e00108d1a91cf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b46991bf0db623543b2e00108d1a91cf, type: 3}
