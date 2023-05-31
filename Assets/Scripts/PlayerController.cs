@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         moveDirection = new Vector3(horizontalInput, verticalInput , 0f);
 
-        rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Force);
+        rb.AddForce(moveDirection.normalized * moveSpeed * Mathf.Sin(Time.deltaTime * 50f), ForceMode.Force);
         
         //If is moving
         if(moveDirection != Vector3.zero)

@@ -6,7 +6,7 @@ public class Plant_Setup : MonoBehaviour
 {
     // Start is called before the first frame update
     int layerMask = 1 << 8;
-    int hitDistance = 1000;
+    // int hitDistance = 1000;
     private void Awake()
     {
         RaycastHit hit;
