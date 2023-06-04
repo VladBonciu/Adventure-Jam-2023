@@ -13,7 +13,7 @@ public class Fish: MonoBehaviour {
 
     int minSize;
     int maxSize;
-    float size;
+    public float size;
 
     bool carnivorous;
     bool herbivorous;
@@ -89,7 +89,7 @@ public class Fish: MonoBehaviour {
 
     private void Update()
     {
-        hunger -= 2 * Time.deltaTime;
+        hunger -= 1 * Time.deltaTime;
 
         if(hunger < 50f)
         {
@@ -107,9 +107,9 @@ public class Fish: MonoBehaviour {
         }
         
     }
-    void Eat()
+    void Eat(float amount)
     {
-        hunger = hungerCop;
+        hunger += amount * 10f;
     }
 
     bool RandomPreference() //Random bool generator
@@ -139,12 +139,12 @@ public class Fish: MonoBehaviour {
             if((hit.collider.gameObject.layer == LayerMask.NameToLayer("Fish")) && carnivorous)
             {  
                 fishMovement.moveSpeed = fishType.hungerSpeed;
-                fishMovement.TartgetObject(hit.transform);
+                fishMovement.TartgetObject(hit.point);
             }
             else if((hit.collider.gameObject.layer == LayerMask.NameToLayer("Vegetation")) && herbivorous)
             {
                 fishMovement.moveSpeed = fishType.hungerSpeed;
-                fishMovement.TartgetObject(hit.transform);
+                fishMovement.TartgetObject(hit.point);
             }   
         }
     }
@@ -153,12 +153,21 @@ public class Fish: MonoBehaviour {
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Fish") && carnivorous && isHungry)
         {
-            Eat();
+            if(collision.gameObject.GetComponent<Fish>())
+            {
+                Eat(collision.gameObject.GetComponent<Fish>().size);
+                Debug.Log("Ate fish of " + collision.gameObject.GetComponent<Fish>().size);
+            }
+            else
+            {
+                //Player
+                Eat(3f);
+            }
             Destroy(collision.gameObject);
         }
         else if(collision.gameObject.layer == LayerMask.NameToLayer("Vegetation") && herbivorous && isHungry)
         {
-            Eat();
+            Eat(5f);
             Destroy(collision.gameObject);
         }
     }

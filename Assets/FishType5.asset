@@ -19,7 +19,7 @@ MonoBehaviour:
   herbivorous: 1
   detectionRange: 15
   hasSpecificColor: 1
-  specificColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 0}
-  colorVariation: 0.3
+  specificColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 0}
+  colorVariation: 0.5
   normalSpeed: 1
   hungerSpeed: 2

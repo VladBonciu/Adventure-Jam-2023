@@ -26,6 +26,10 @@ public class FishMovement : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, transform.position.y, 10f);
 
+        movex = Random.Range(-20, 20);
+        movey = Random.Range(-10, 10);
+        movementTime = Random.Range(1, 5);
+
         StartCoroutine(Wander());
     }
 
@@ -93,10 +97,10 @@ public class FishMovement : MonoBehaviour
         
     }
 
-    public void TartgetObject(Transform location)
+    public void TartgetObject(Vector3 location)
     {
         isTargeting = true;
-        Vector3 heading = new Vector3(location.position.x ,location.position.y , 0) - new Vector3(transform.position.x ,transform.position.y , 0);
+        Vector3 heading = new Vector3(location.x ,location.y , 0) - new Vector3(transform.position.x ,transform.position.y , 0);
         direction = ( heading / heading.magnitude).normalized;
         
     }
