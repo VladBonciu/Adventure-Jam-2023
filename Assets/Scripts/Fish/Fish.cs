@@ -14,9 +14,14 @@ public class Fish: MonoBehaviour {
     int minSize;
     int maxSize;
     public float size;
+    public Color color;
 
     bool carnivorous;
     bool herbivorous;
+
+    public GameObject fleshPrefab;
+
+    public GameObject deathEffect;
     
 
     [Header("Movement")]
@@ -68,6 +73,8 @@ public class Fish: MonoBehaviour {
                 this.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Random.ColorHSV(0f, 1f, 0.2f, 0.5f, 0.8f, 1f);
             }
         }
+
+        color = this.GetComponentInChildren<SkinnedMeshRenderer>().material.color;
 
         size =  Random.Range(minSize , maxSize);
         
@@ -121,8 +128,18 @@ public class Fish: MonoBehaviour {
         return false;
     }
 
-    void Die() //Die if hungry
+    public void Die() //Die if hungry
     {
+        GameObject flesh = fleshPrefab;
+        flesh.transform.localScale = new Vector3(1f, 1f, 1f) * size * 2f;
+        flesh.gameObject.GetComponent<Flesh>().color = color;
+        flesh.gameObject.GetComponent<Flesh>().size = size;
+        Instantiate(flesh, transform.position + Vector3.one * Random.Range(-.1f, .1f), transform.rotation);
+        Instantiate(flesh, transform.position + Vector3.one * Random.Range(-.1f, .1f), transform.rotation);
+        Instantiate(flesh, transform.position + Vector3.one * Random.Range(-.1f, .1f), transform.rotation);
+
+        Instantiate(deathEffect, new Vector3(transform.position.x, transform.position.y, 0f), transform.rotation);
+         
         Destroy(this.gameObject);
     }
 
@@ -155,12 +172,27 @@ public class Fish: MonoBehaviour {
         {
             if(collision.gameObject.GetComponent<Fish>())
             {
-                Eat(collision.gameObject.GetComponent<Fish>().size);
-                Debug.Log("Ate fish of " + collision.gameObject.GetComponent<Fish>().size);
+                collision.gameObject.GetComponent<Fish>().Die();
+
+                Debug.Log("Killed fish of " + collision.gameObject.GetComponent<Fish>().size);
+            }
+            else if(collision.gameObject.GetComponent<Flesh>())
+            {
+                Eat(collision.gameObject.GetComponent<Flesh>().size);
+
+                Debug.Log("Ate flesh of " + collision.gameObject.GetComponent<Flesh>().size);
             }
             else
             {
                 //Player
+                GameObject flesh = fleshPrefab;
+                flesh.transform.localScale = new Vector3(1f, 1f, 1f) * 3f * 2f;
+                flesh.gameObject.GetComponent<Flesh>().color = collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color;
+                flesh.gameObject.GetComponent<Flesh>().size = 3f;
+                Instantiate(flesh, collision.transform.position + Vector3.one * Random.Range(-.1f, .1f), collision.transform.rotation);
+                Instantiate(flesh, collision.transform.position + Vector3.one * Random.Range(-.1f, .1f), collision.transform.rotation);
+                Instantiate(flesh, collision.transform.position + Vector3.one * Random.Range(-.1f, .1f), collision.transform.rotation);
+
                 Eat(3f);
             }
             Destroy(collision.gameObject);

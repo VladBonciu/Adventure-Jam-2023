@@ -4891,12 +4891,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4275cb775112d643a0c1c1ba2186414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishType: {fileID: 11400000, guid: 4d5b3f11834aa894bb83950b53247025, type: 2}
+  fishType: {fileID: 11400000, guid: 545f433b16fd4cd468642c5751c3d2b4, type: 2}
   fishMovement: {fileID: 4794417035372154791}
   fishMesh: {fileID: 4352992440223330292}
   fishMeshCollider: {fileID: 8031627223477907398}
   meshObject: {fileID: 5223150771487247101}
   size: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  fleshPrefab: {fileID: 614823931004762829, guid: cb5566b59912f4c4e88a7fff3f25863d,
+    type: 3}
+  deathEffect: {fileID: 8957461148386481263, guid: 21ed517144e64704ea27d895df5ff10c,
+    type: 3}
   normalSpeed: 1
   hungerSpeed: 2
   hunger: 100
