@@ -9,10 +9,13 @@ public class Fisherman : MonoBehaviour
     [SerializeField] GameObject hook;
     float maxDepth;
     int layerMask = 1 << 8;
- 
+    [SerializeField] float speed = 5;
+    bool CanMove = false;
+    public float hookingTime = 10;
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        StartCoroutine(Move());
     }
 
    
@@ -23,14 +26,16 @@ public class Fisherman : MonoBehaviour
         {
             maxDepth = hit.transform.position.y;
         }
-        StartCoroutine(Move());
+     
     }
 
     IEnumerator Move() 
     {
-        rb.MovePosition(new Vector3(Random.Range(-movementRange, movementRange), transform.position.y, transform.position.z));
+        transform.position = Vector3.Lerp(transform.position, new Vector3(Random.Range(-movementRange, movementRange), transform.position.y, transform.position.z), speed);
+        yield return new WaitForSeconds(5);
+        CanMove = false;
         DeployHook();
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(hookingTime);
         StartCoroutine(Move());       
     }
 
@@ -38,6 +43,7 @@ public class Fisherman : MonoBehaviour
     {
         Instantiate(hook, new Vector3(transform.position.x,Random.Range(maxDepth+1,8),transform.position.z),Quaternion.identity);
     }
+   
     
 
 }
