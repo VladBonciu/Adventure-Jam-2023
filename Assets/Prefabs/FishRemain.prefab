@@ -31,7 +31,11 @@ Transform:
   m_GameObject: {fileID: 614823931004762829}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 10}
+<<<<<<< HEAD
   m_LocalScale: {x: 6, y: 6, z: 6}
+=======
+  m_LocalScale: {x: 26, y: 26, z: 26}
+>>>>>>> 1b8fcdd881d9d6b7f5819747c88ca4bafe7c9bf2
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -131,8 +135,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 308816302359676834}
+<<<<<<< HEAD
   size: 3
   color: {r: 0.70918584, g: 0.77254903, b: 0.3121098, a: 1}
+=======
+  size: 13
+  color: {r: 0.85882354, g: 0.6334318, b: 0.5022902, a: -0.1}
+>>>>>>> 1b8fcdd881d9d6b7f5819747c88ca4bafe7c9bf2
 --- !u!96 &-2786383346571981794
 TrailRenderer:
   serializedVersion: 2
