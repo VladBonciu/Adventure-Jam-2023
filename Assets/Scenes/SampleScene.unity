@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 410087040}
-  m_IndirectSpecularColor: {r: 0.14906827, g: 0.41792622, b: 0.6034524, a: 1}
+  m_IndirectSpecularColor: {r: 0.14906827, g: 0.41792625, b: 0.60345244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11144,3 +11144,77 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1001 &6410474324576791201
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6410474324326785676, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Fisherman
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410474324326785678, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: hookingTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410474324326785682, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410474324326785682, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410474324326785682, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.442
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410474324326785682, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410474324326785682, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410474324326785682, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410474324326785682, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410474324326785682, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410474324326785682, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410474324326785682, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410474324326785682, guid: fc9a5c90432dcaf4e93c90244aec99cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc9a5c90432dcaf4e93c90244aec99cd, type: 3}
