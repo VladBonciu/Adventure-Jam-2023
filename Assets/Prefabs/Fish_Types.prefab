@@ -4898,7 +4898,7 @@ MonoBehaviour:
   meshObject: {fileID: 5223150771487247101}
   size: 0
   color: {r: 0, g: 0, b: 0, a: 0}
-  fleshPrefab: {fileID: 614823931004762829, guid: cb5566b59912f4c4e88a7fff3f25863d,
+  fleshPrefab: {fileID: 8389225987051241388, guid: 6613262e4010d0649a9cc4df329e61b2,
     type: 3}
   deathEffect: {fileID: 8957461148386481263, guid: 21ed517144e64704ea27d895df5ff10c,
     type: 3}

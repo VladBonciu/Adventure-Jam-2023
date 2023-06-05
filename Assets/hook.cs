@@ -23,7 +23,7 @@ public class hook : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Fish")) 
         {
-        other.gameObject.GetComponent<Fish>().Die();
+            other.gameObject.GetComponent<Fish>().Die();
         }
     }
     IEnumerator Dissapear() 
