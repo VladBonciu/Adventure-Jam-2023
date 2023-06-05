@@ -21,7 +21,7 @@ public class hook : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 6) 
+        if (other.gameObject.layer == LayerMask.NameToLayer("Fish")) 
         {
         other.gameObject.GetComponent<Fish>().Die();
         }
