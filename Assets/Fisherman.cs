@@ -7,8 +7,7 @@ public class Fisherman : MonoBehaviour
     Rigidbody rb;
     [SerializeField] float movementRange;
     [SerializeField] GameObject hook;
-    float maxDepth;
-    int layerMask = 1 << 8;
+    [SerializeField] private float maxDepth;
     [SerializeField] float speed = 5;
     bool CanMove = false;
     public float hookingTime = 10;
@@ -16,17 +15,6 @@ public class Fisherman : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         StartCoroutine(Move());
-    }
-
-   
-    void Update()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layerMask)) 
-        {
-            maxDepth = hit.transform.position.y;
-        }
-     
     }
 
     IEnumerator Move() 
@@ -41,7 +29,18 @@ public class Fisherman : MonoBehaviour
 
     void DeployHook() 
     {
-        Instantiate(hook, new Vector3(transform.position.x,Random.Range(maxDepth+1,8),transform.position.z),Quaternion.identity);
+        RaycastHit hit;
+
+        if(Physics.Raycast(transform.position + Vector3.down, Vector3.down, out hit, 100f)) 
+        {
+            maxDepth = hit.distance;
+            Debug.Log(hit.distance);
+        }
+        
+        GameObject hookObject = hook;
+        hookObject.GetComponent<Hook>().setHeight = transform.position.y - Random.Range(2 , maxDepth);
+
+        Instantiate(hookObject, new Vector3(transform.position.x, transform.position.y - 1,transform.position.z),Quaternion.identity);
     }
    
     

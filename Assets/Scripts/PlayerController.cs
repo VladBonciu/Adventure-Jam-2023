@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] public KeyCode dashKey;
 
+    [Header("Effects")]
+    [SerializeField] GameObject fleshPrefab;
+
     void Awake()
     {
         canDash = true;
@@ -69,6 +72,19 @@ public class PlayerController : MonoBehaviour
         {
             isMoving = false;
         }
+    }
+
+    public void Die() //Die if hungry
+    {
+        GameObject flesh = fleshPrefab;
+        flesh.transform.localScale = new Vector3(1f, 1f, 1f) * 3f * 2f;
+        flesh.gameObject.GetComponent<Flesh>().color = gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color;
+        flesh.gameObject.GetComponent<Flesh>().size = 3f;
+        Instantiate(flesh, transform.position + Vector3.one * Random.Range(-.1f, .1f), transform.rotation);
+        Instantiate(flesh, transform.position + Vector3.one * Random.Range(-.1f, .1f), transform.rotation);
+        Instantiate(flesh, transform.position + Vector3.one * Random.Range(-.1f, .1f), transform.rotation);
+         
+        Destroy(gameObject);
     }
 
     IEnumerator DashCountDown()
