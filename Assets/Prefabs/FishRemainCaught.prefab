@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8389225987051241388
+--- !u!1 &4969623800910717202
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,27 +8,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9162384578350572822}
-  - component: {fileID: 5226585351729277619}
-  - component: {fileID: 8028925166610652793}
-  - component: {fileID: 8695867347785155312}
-  - component: {fileID: 8695867347785155313}
-  - component: {fileID: 8695867347785155314}
-  - component: {fileID: 8695867347785155315}
+  - component: {fileID: 5745597142314810280}
+  - component: {fileID: 8652450338854630413}
+  - component: {fileID: 6915095758986510535}
+  - component: {fileID: 5203574386347547726}
+  - component: {fileID: 5203574386347547727}
+  - component: {fileID: 5203574386347547724}
+  - component: {fileID: 5203574386347547725}
   m_Layer: 6
-  m_Name: FishRemain!!
+  m_Name: FishRemainCaught
   m_TagString: Flesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9162384578350572822
+--- !u!4 &5745597142314810280
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8389225987051241388}
+  m_GameObject: {fileID: 4969623800910717202}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 6}
@@ -37,21 +37,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5226585351729277619
+--- !u!33 &8652450338854630413
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8389225987051241388}
+  m_GameObject: {fileID: 4969623800910717202}
   m_Mesh: {fileID: -5495902117074765545, guid: 5915f444bf77c7f4eae7f9b76a99003b, type: 3}
---- !u!23 &8028925166610652793
+--- !u!23 &6915095758986510535
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8389225987051241388}
+  m_GameObject: {fileID: 4969623800910717202}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -89,58 +89,58 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8695867347785155312
+--- !u!65 &5203574386347547726
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8389225987051241388}
+  m_GameObject: {fileID: 4969623800910717202}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.021454683, y: 0.020688247, z: 0.020092778}
   m_Center: {x: -0.0001369929, y: 0.00060654746, z: -0.000057057}
---- !u!114 &8695867347785155313
+--- !u!114 &5203574386347547727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8389225987051241388}
+  m_GameObject: {fileID: 4969623800910717202}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a7a21c033627a04e9cb47a3a187ce89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 8695867347785155314}
+  rb: {fileID: 5203574386347547724}
   size: 3
   color: {r: 0.70918584, g: 0.77254903, b: 0.3121098, a: 1}
---- !u!54 &8695867347785155314
+--- !u!54 &5203574386347547724
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8389225987051241388}
+  m_GameObject: {fileID: 4969623800910717202}
   serializedVersion: 2
   m_Mass: 0.1
   m_Drag: 1
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
-  m_Constraints: 8
+  m_Constraints: 14
   m_CollisionDetection: 1
---- !u!96 &8695867347785155315
+--- !u!96 &5203574386347547725
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8389225987051241388}
+  m_GameObject: {fileID: 4969623800910717202}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1

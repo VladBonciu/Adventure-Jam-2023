@@ -184,15 +184,7 @@ public class Fish: MonoBehaviour {
             }
             else
             {
-                //Player
-                GameObject flesh = fleshPrefab;
-                flesh.transform.localScale = new Vector3(1f, 1f, 1f) * 3f * 2f;
-                flesh.gameObject.GetComponent<Flesh>().color = collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color;
-                flesh.gameObject.GetComponent<Flesh>().size = 3f;
-                Instantiate(flesh, collision.transform.position + Vector3.one * Random.Range(-.1f, .1f), collision.transform.rotation);
-                Instantiate(flesh, collision.transform.position + Vector3.one * Random.Range(-.1f, .1f), collision.transform.rotation);
-                Instantiate(flesh, collision.transform.position + Vector3.one * Random.Range(-.1f, .1f), collision.transform.rotation);
-
+                collision.gameObject.GetComponent<PlayerController>().Die();
                 Eat(3f);
             }
             Destroy(collision.gameObject);

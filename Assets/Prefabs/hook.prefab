@@ -158,6 +158,37 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!1 &4953535380007977771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1924088187138504034}
+  m_Layer: 0
+  m_Name: CatchOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1924088187138504034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4953535380007977771}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.891, z: -0.042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2794700109486415402}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6768589877507971762
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +220,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 543450653297562112}
+  - {fileID: 1924088187138504034}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -219,9 +251,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fisherman: {fileID: 6410474324326785676, guid: fc9a5c90432dcaf4e93c90244aec99cd,
     type: 3}
-  line: {fileID: 0}
-  setHeight: 4.883877
-  fleshPrefab: {fileID: 0}
+  hookOrigin: {fileID: 1924088187138504034}
+  line: {fileID: 518160577}
+  setHeight: 4.6060557
+  moveSpeed: 1
+  fleshPrefab: {fileID: 4969623800910717202, guid: 650d4e36015ad8d45adc600a1bab20b9,
+    type: 3}
 --- !u!1001 &410793451
 PrefabInstance:
   m_ObjectHideFlags: 0

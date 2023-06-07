@@ -17,11 +17,19 @@ public class Fisherman : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         StartCoroutine(Move());
     }
-    private void Update()
+    private void FixedUpdate()
     {
+
+        // rb.AddForce(Vector3.up * rb.mass * Physics.gravity.y, ForceMode.Acceleration);
+        // rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
+
+        Quaternion deltaRotation = Quaternion.Euler(0f, 0f, 0f);
+        transform.rotation= Quaternion.Slerp(transform.rotation, deltaRotation, Time.deltaTime);  
+        
         if (moving)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(Random.Range(-movementRange, movementRange), transform.position.y, transform.position.z), speed);
+            // transform.position = Vector3.Lerp(transform.position, new Vector3(Random.Range(-movementRange, movementRange), transform.position.y, transform.position.z), speed);
+            rb.AddForce(new Vector3(Random.Range(-movementRange, movementRange), 0f, 0f).normalized * speed  * 4000f, ForceMode.Force); 
             moving = false;
         }
     }
@@ -29,7 +37,7 @@ public class Fisherman : MonoBehaviour
     {
         moving = true;
         yield return new WaitForSeconds(5);
-        CanMove = false;
+        moving = false;
         DeployHook();
         yield return new WaitForSeconds(hookingTime);
         StartCoroutine(Move());       
@@ -46,9 +54,9 @@ public class Fisherman : MonoBehaviour
         }
         
         GameObject hookObject = hook;
-        hookObject.GetComponent<Hook>().setHeight = transform.position.y - Random.Range(2, maxDepth);
+        hookObject.GetComponent<Hook>().setHeight = Random.Range(3, maxDepth);
 
-        Instantiate(hookObject, new Vector3(transform.position.x, transform.position.y - 1,transform.position.z),Quaternion.identity);
+        Instantiate(hookObject, transform.position + Vector3.down , Quaternion.identity);
     }
    
     
