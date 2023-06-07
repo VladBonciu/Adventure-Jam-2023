@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2794700109486415402}
   - component: {fileID: 3521331918190711240}
-  - component: {fileID: 6061329024619677338}
+  - component: {fileID: 2237532786095616602}
   m_Layer: 0
   m_Name: hook
   m_TagString: Untagged
@@ -205,7 +205,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.7, z: 0.4}
   m_Center: {x: 0, y: -0.52, z: -0.06}
---- !u!114 &6061329024619677338
+--- !u!114 &2237532786095616602
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,10 +219,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fisherman: {fileID: 6410474324326785676, guid: fc9a5c90432dcaf4e93c90244aec99cd,
     type: 3}
-  line: {fileID: 518160577}
-  setHeight: -0.3338318
-  fleshPrefab: {fileID: 919132149155446097, guid: 5915f444bf77c7f4eae7f9b76a99003b,
-    type: 3}
+  line: {fileID: 0}
+  setHeight: 4.883877
+  fleshPrefab: {fileID: 0}
 --- !u!1001 &410793451
 PrefabInstance:
   m_ObjectHideFlags: 0

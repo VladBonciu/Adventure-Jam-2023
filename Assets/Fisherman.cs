@@ -11,15 +11,23 @@ public class Fisherman : MonoBehaviour
     [SerializeField] float speed = 5;
     bool CanMove = false;
     public float hookingTime = 10;
+    bool moving = true;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         StartCoroutine(Move());
     }
-
+    private void Update()
+    {
+        if (moving)
+        {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(Random.Range(-movementRange, movementRange), transform.position.y, transform.position.z), speed);
+            moving = false;
+        }
+    }
     IEnumerator Move() 
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3(Random.Range(-movementRange, movementRange), transform.position.y, transform.position.z), speed);
+        moving = true;
         yield return new WaitForSeconds(5);
         CanMove = false;
         DeployHook();
@@ -38,7 +46,7 @@ public class Fisherman : MonoBehaviour
         }
         
         GameObject hookObject = hook;
-        hookObject.GetComponent<Hook>().setHeight = transform.position.y - Random.Range(2 , maxDepth);
+        hookObject.GetComponent<Hook>().setHeight = transform.position.y - Random.Range(2, maxDepth);
 
         Instantiate(hookObject, new Vector3(transform.position.x, transform.position.y - 1,transform.position.z),Quaternion.identity);
     }
